@@ -1,6 +1,10 @@
 package cn._91mushroom.entity;
 
-
+/**
+ * 返回结果对象
+ * @author H.H
+ *
+ */
 public class Result {
 	
 	private Integer code;//0:成功  -1：失败
