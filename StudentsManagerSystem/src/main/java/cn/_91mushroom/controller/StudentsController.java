@@ -92,17 +92,17 @@ public class StudentsController{
 	
 	@ResponseBody
 	@RequestMapping(value = "update/{student_id}", method=RequestMethod.POST)
-	public Result updateStudent(@PathVariable("student_id") Integer syudent_id,Student student) {
+	public Result updateStudent(@PathVariable("student_id") Integer student_id,Student student) {
 		
 		Result result = new Result();
 		
-		if (syudent_id == null || syudent_id < 0) {
+		if (student_id == null || student_id < 0) {
 			result.setCode(-1);
 			result.setMessage("id错误");
 			return result;
 		}
 		
-		student.setId(syudent_id);
+		student.setId(student_id);
 		
 		Integer r = studentsSercice.updateStudent(student);
 		
@@ -111,7 +111,7 @@ public class StudentsController{
 			result.setMessage("修改成功");
 		}else {
 			result.setCode(-1);
-			result.setMessage("修改失败");
+			result.setMessage("修改失败,该id不存在");
 		}
 		
 		return result;
@@ -139,6 +139,7 @@ public class StudentsController{
 		map.put("count", r);
 		
 		result.setData(JSON.toJSON(map));
+		
 		return result;
 	}
 }
