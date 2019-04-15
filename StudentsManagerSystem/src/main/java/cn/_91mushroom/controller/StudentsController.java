@@ -27,11 +27,11 @@ import cn._91mushroom.service.StudentsService;
 public class StudentsController{
 	
 	@Autowired
-	private StudentsService studentsSercice;
+	private StudentsService studentsService;
 	
 	
-	public void setStudentsSercice(StudentsService studentsSercice) {
-		this.studentsSercice = studentsSercice;
+	public void setStudentsSercice(StudentsService studentsService) {
+		this.studentsService = studentsService;
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class StudentsController{
 	@RequestMapping(value = "add", method=RequestMethod.POST)
 	public Result addStudent(Student student) {
 		
-		Integer id = studentsSercice.addStudent(student);
+		Integer id = studentsService.addStudent(student);
 		
 		Result result = new Result();
 		
@@ -82,14 +82,14 @@ public class StudentsController{
 		
 		Integer fisrtPosition = page * page_size;
 		
-		List<Student> students = studentsSercice.fetchStudents(fisrtPosition, page_size);
+		List<Student> students = studentsService.fetchStudents(fisrtPosition, page_size);
 		
 		result.setCode(0);
 		result.setMessage("查询成功");
 		
 		Map<String, Object> map = new TreeMap<>();
 		
-		Integer numberOfStudents = studentsSercice.countStudents();
+		Integer numberOfStudents = studentsService.countStudents();
 		
 		if ((fisrtPosition + page_size) >= numberOfStudents) {
 			map.put("hasmore", 0);
@@ -117,7 +117,7 @@ public class StudentsController{
 		
 		student.setId(student_id);
 		
-		Integer r = studentsSercice.updateStudent(student);
+		Integer r = studentsService.updateStudent(student);
 		
 		if (r == 1) {
 			result.setCode(0);
@@ -142,7 +142,7 @@ public class StudentsController{
 		Result result = new Result();
 		String[] idArray = ids.split(",");
 		
-		Integer r = studentsSercice.deleteStudents(idArray);
+		Integer r = studentsService.deleteStudents(idArray);
 		
 		if(r > 0) {
 			result.setCode(0);
