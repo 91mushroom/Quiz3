@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn._91mushroom.mapper.StudentsMapper">
+
+
+	<insert id="addStudent"
+		parameterType="cn._91mushroom.entity.Student" keyProperty="id"
+		useGeneratedKeys="true">
+		INSERT INTO students(name,age,avatar_url,credit)
+		VALUES(#{name},#{age},#{avatar_url},#{credit});
+	</insert>
+
+	<select id="fetchStudents" parameterType="int"
+		resultType="cn._91mushroom.entity.Student">
+		SELECT * FROM students LIMIT #{fisrtPosition},#{page_size};
+	</select>
+
+	<select id="countStudents" resultType="int">
+		SELECT count(*) FROM students;
+	</select>
+
+
+	<update id="updateStudent" parameterType="cn._91mushroom.entity.Student">
+		UPDATE students
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="age != null">
+				age = #{age},
+			</if>
+			<if test="avatar_url != null">
+				avatar_url = #{avatar_url},
+			</if>
+			<if test="credit != null">
+				credit = #{credit},
+			</if>
+		</set>
+		WHERE id = #{id};
+
+	</update>
+	
+	<delete id="deleteStudents" parameterType="Object[]">
+		DELETE FROM students
+		<where>
+		    <foreach collection="array" item="temp" open="id in (" close=")" separator=",">
+		        #{temp}
+		    </foreach>
+		</where>
+	</delete>
+
+</mapper>
