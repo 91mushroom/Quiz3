@@ -1,11 +1,16 @@
 package cn._91mushroom.exception;
 
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn._91mushroom.entity.Result;
+
+/**
+ * 错误处理类，负责该项目的错误处理
+ * @author H.H
+ *
+ */
 
 @ControllerAdvice
 public class MyExceptionHandler {

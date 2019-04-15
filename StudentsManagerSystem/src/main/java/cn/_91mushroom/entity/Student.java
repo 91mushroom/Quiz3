@@ -1,6 +1,11 @@
 package cn._91mushroom.entity;
-
+/**
+ * 学生实体类
+ * @author H.H
+ *
+ */
 public class Student {
+	
 	private Integer id;
 	private String name;
 	private Integer age;
