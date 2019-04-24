@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 import cn._91mushroom.entity.Student;
 import cn._91mushroom.mapper.StudentsMapper;
 
+/**
+ * service类
+ * @author H.H
+ *
+ */
 @Service
 public class StudentsService {
 
 	@Autowired
 	private StudentsMapper studentsMapper;
-
-	public void setStudentsMapper(StudentsMapper studentsMapper) {
-		this.studentsMapper = studentsMapper;
-	}
 
 	public Integer addStudent(Student student) {
 		return studentsMapper.addStudent(student);

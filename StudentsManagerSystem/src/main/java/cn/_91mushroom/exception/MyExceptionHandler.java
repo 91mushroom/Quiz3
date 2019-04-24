@@ -16,7 +16,11 @@ import cn._91mushroom.entity.Result;
 public class MyExceptionHandler {
 	
 
-	
+	/**
+	 * 捕获错误，并将错误信息放入到message中
+	 * @param e
+	 * @return
+	 */
 	@ResponseBody
 	@ExceptionHandler({Exception.class})
 	public Result handlerException(Exception e) {

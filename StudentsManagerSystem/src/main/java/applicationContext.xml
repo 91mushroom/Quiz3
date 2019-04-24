@@ -13,7 +13,7 @@
 		</property>
 	</bean>
 
-	<!-- 配置配置数据库信息 -->
+	<!-- 配置数据库信息 -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${driver}"></property>
@@ -29,9 +29,10 @@
 		<property name="mapperLocations" value="classpath:cn/_91mushroom/mapper/*.xml"></property>
 	</bean>
 	
-	<!-- 将MyBatis的SqlSessionFactory 交给Spring -->
+	<!-- 将MyBatis的SqlSessionFactory 交给Spring，即通过使用sqlsessionfactory创建相应的动态代理对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	 	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	 	<!-- 扫描cn._91mushroom.mapper下的所有接口，然后创建各自接口的动态代理类 -->
 	 	<property name="basePackage" value="cn._91mushroom.mapper"></property>
 	 </bean>
 

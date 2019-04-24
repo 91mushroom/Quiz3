@@ -29,10 +29,6 @@ public class StudentsController{
 	@Autowired
 	private StudentsService studentsService;
 	
-	
-	public void setStudentsSercice(StudentsService studentsService) {
-		this.studentsService = studentsService;
-	}
 
 	/**
 	 * 向表中增加学生
@@ -151,8 +147,6 @@ public class StudentsController{
 			result.setCode(-1);
 			result.setMessage("删除失败，id不存在");
 		}
-		
-		
 		
 		return result;
 	}
